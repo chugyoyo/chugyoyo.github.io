@@ -135,7 +135,7 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://blog.chugyoyo.com/cn/1630303287/">
+  <link rel="canonical" href="https://blog.chugyoyo.com/page_back/Java8源码之——HashMap.html">
   <title>
     
       Java8源码之——HashMap - chugyoyo
@@ -285,6 +285,69 @@
           </li>
           
           
+          
+          <li>
+            <a href="/page_back/Java8源码之——HashMap.html">
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/page_back/Java8源码之——Queue.html">
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/page_back/入门TCP的机制及握手挥手.html">
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/page_back/固态硬盘SSD m2接口及相关协议的关系.html">
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/page_back/简单正则表达式匹配算法.html">
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/page_back/多步问题——斐波那契青蛙跳台阶三步问题的引申.html">
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/page_back/荷兰国旗问题.html">
+              
+              
+            </a>
+          </li>
+          
+          
 
           
           <li>
@@ -296,7 +359,29 @@
           <!-- LangSelect -->
           
           
-          
+          <!-- LangSelect start -->
+          <!-- LangSelect -->
+<li>
+  <a id="lang-select-label"><i class="fa fa-globe"></i>
+    <span>
+      简体中文
+    </span>
+    <select id="lang-select" data-canonical="page_back/Java8源码之——HashMap.html">
+      
+      
+      <option value="en" >
+        English
+      </option>
+      
+      <option value="cn"  selected >
+        简体中文
+      </option>
+      
+    </select>
+  </a>
+</li>
+
+          <!-- LangSelect end -->
           
           
         </ul>
@@ -358,9 +443,9 @@
     }
 
     header.intro-header {
-       /*post*/
-        background-image: var(--intro-header-background-image-url-post);
-        /* background-image: url('/img/header_img/lml_bg.jpg'); */
+       /*page*/
+        background-image: var(--intro-header-background-image-url-page);
+        /* background-image: url('//img/header_img/lml_bg.jpg'); */
       
     }
 
@@ -378,46 +463,10 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="post-heading">
-            <div class="tags">
-              
-              <a class="tag" href="/tags/#Java" title="Java">Java</a>
-              
-              <a class="tag" href="/tags/#jdk" title="jdk">jdk</a>
-              
-              <a class="tag" href="/tags/#source code" title="source code">source code</a>
-              
-            </div>
+          <div class="site-heading">
             <h1>Java8源码之——HashMap</h1>
-            <h2 class="subheading"></h2>
-            <span class="meta">
-              Posted by chugyoyo on
-              2021-08-30
-            </span>
-
-
-            
-            <!-- WordCount start -->
-            <div class="blank_box"></div>
-            <span class="meta">
-              Estimated Reading Time <span class="post-count">28</span> Minutes
-            </span>
-            <div class="blank_box"></div>
-            <span class="meta">
-              Words <span class="post-count">5.9k</span> In Total
-            </span>
-            <div class="blank_box"></div>
-            <!-- WordCount end -->
-            
-            
-            <!-- 不蒜子统计 start -->
-            <span class="meta" id="busuanzi_container_page_pv">
-              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
-            </span>
-            <!-- 不蒜子统计 end -->
-            
-
-
+            <!--<hr class="small">-->
+            <span class="subheading">The human brain is like a model that gradually updates its parameters through everyday life. These parameters are cognition.</span>
           </div>
           
         </div>
@@ -458,15 +507,22 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Modify by Yu-Hsuan Yen -->
-<!-- Post Content -->
-<article>
-  <div class="container">
-    <div class="row">
-      <!-- Post Container -->
-      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+		<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    
 
-        <h1>总体介绍</h1>
+    <!-- USE SIDEBAR -->
+    <!-- Post Container -->
+    <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+
+      <h1>总体介绍</h1>
 <p>哈希表，其中存储KEY-VALUE键值对，存储时通过计算KEY的HASH值，然后再将HASH值映射到数组空间，创建结点（Node），然后装入结点数组中。</p>
 <p>因为不同的KEY有可能HASH值相等、或者不同HASH值映射出的数组下标相等，也就是发生了哈希冲突，那么他们要装入同一个位置，这时候用链表解决，后续进来的都链到尾部去。但是链表一长效率就变低，所以一旦插入时发现链表长度超过树化的阈值（TREEIFY_THRESHOLD），就会将链表转成红黑树。如果树结点变得太少，少于非树化阈值（UNTREEIFY_THRESHOLD），那么又转为链表。</p>
 <p>但插入的键值对结点太多，就会导致冲突变多，效率就会变低。这时候我们设置如果结点数量（size）超过扩容阈值（threshold），我们就进行扩容（resize）。扩容时，数组容量（capacity）变为原来的2倍，扩容阈值（threshold）因为是数组容量（capacity）*装载因子（loadFactor），所以也变成原先的2倍。所以从这个角度上看，装载因子（loadFactor）决定了在一定容量（capacity）的数组下最多可以装多少个结点（Node）。</p>
@@ -844,247 +900,102 @@
 <p>具有模式变化的并发检测。</p>
 
 
-        <hr>
-        <!-- Pager -->
-        <ul class="pager">
-          
-          <li class="previous">
-            <a href="/en/cli54hjjo0001zotdf2x3blye/" data-toggle="tooltip" data-placement="top" title="github-emoji">&larr; Previous Post</a>
-          </li>
-          
-          
-          <li class="next">
-            <a href="/cn/1630301212/" data-toggle="tooltip" data-placement="top" title="Java8源码之——Queue">Next Post &rarr;</a>
-          </li>
-          
-        </ul>
+      <!-- 如果开启评论功能 -->
+      
+      <hr>
 
-        
-        <!-- tip start -->
-        <!-- tip -->
-<!-- tip start -->
-<div class="tip">
-  <p>
+      
+
+      
+      
+    </div>
+
+    <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
     
-      如果您喜欢此博客或发现它对您有用，则欢迎对此发表评论。 也欢迎您共享此博客，以便更多人可以参与。 如果博客中使用的图像侵犯了您的版权，请与作者联系以将其删除。 谢谢 ！
-    
-  </p>
+        <!-- Visitors -->
+<h5><a href="/">来访者</a></h5>
+
+<div class="widget">
+  <span>
+    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
+  </span>
+  <br />
+  <span>
+    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
+  </span>
 </div>
-<!-- tip end -->
 
-        <!-- tip end -->
-        
 
-        
-        <!-- Sharing Srtart -->
-        <!-- Social Social Share Post -->
-<!-- Docs:https://github.com/overtrue/share.js -->
+        <hr>
+    
+        <!-- Featured Tags -->
 
-<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
-  <ul class="list-inline text-center social-share-ul">
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon icon-twitter">
-        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a class="social-share-icon icon-wechat">
-        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon icon-weibo">
-        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon icon-qq">
-        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=Java8源码之——HashMap&body=Hi,I found this website and thought you might like it https://blog.chugyoyo.com/cn/1630303287/">
-        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
+<section>
+  <h5><a href="/tags/">特色标签</a></h5>
+  <div class="tags">
+    
+    
+    <a href="/tags/#git" title="git" rel="1">git</a>
+    
+    
+    
+    <a href="/tags/#github" title="github" rel="1">github</a>
+    
+    
+    
+    <a href="/tags/#emoji" title="emoji" rel="1">emoji</a>
+    
+    
+  </div>
+</section>
+
+
+        <hr>
+    
+        <!-- RECENT POSTS -->
+
+<h5><a href="/">最近博文</a></h5>
+<div class="widget">
+  <ul>
+    
+    <a href="../en/cli54hjjo0001zotdf2x3blye/">
+      <li>github-emoji</li>
+    </a>
+    
   </ul>
 </div>
 
-<!-- css & js -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
-<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
 
-        <!-- Sharing End -->
-        
         <hr>
+    
+        <!-- Archives -->
 
-        <!-- comments start -->
-        <!-- 1. gitalk comment -->
-
-  <!-- gitalk start -->
-  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
-
-  <div id="gitalk-container"></div>
-
-  
-    <!-- <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.js"></script> -->
-    <script src="/js/comment/gitalk.js"></script>
-  
-
-  <script>
-    var gitalk = new Gitalk({
-      clientID: 'f746a1baf87a3a82303e',
-      clientSecret: 'c1e6f2d24cdfded34a54769273d2f8064b337245',
-      repo: 'chugyoyo.github.io',
-      owner: 'chugyoyo',
-      admin: 'chugyoyo',
-      id: 'Mon Aug 30 2021 14:01:27 GMT+0800', // Ensure uniqueness and length less than 50
-      distractionFreeMode: false, // Facebook-like distraction free mode
-      perPage: 10,
-      pagerDirection: 'last',
-      createIssueManually: false,
-      language: 'zh-CN',
-      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
-    });
-    gitalk.render('gitalk-container');
-
-    var gtFolded = () => {
-      setTimeout(function () {
-        let markdownBody = document.getElementsByClassName("markdown-body");
-        let list = Array.from(markdownBody);
-        list.forEach(item => {
-          if (item.clientHeight > 250) {
-            item.classList.add('gt-comment-body-folded');
-            item.style.maxHeight = '250px';
-            item.title = 'Click to Expand';
-            item.onclick = function () {
-              item.classList.remove('gt-comment-body-folded');
-              item.style.maxHeight = '';
-              item.title = '';
-              item.onclick = null;
-            };
-          }
-        })
-      }, 800);
-    }
-  </script>
-
-  <!-- gitalk end -->
+<h5><a href="/archives/">归档</a></h5>
+<div class="widget">
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../archives/2023/05/">May 2023</a><span class="archive-list-count">1</span></li></ul>
+</div>
 
 
-<!-- 2. gitment comment -->
-
-
-<!-- 3. disqus comment -->
-
-
-        <!-- comments end -->
         <hr>
+    
+        <!-- Categories -->
 
-      </div>
 
-      <!-- Catalog: Tabe of Content -->
-      <!-- Table of Contents -->
+        <hr>
+    
+</div>
+
 
     
-      <aside id="sidebar">
-        <div id="toc" class="toc-article">
-        <strong class="toc-title">目录</strong>
-        
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">总体介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">所在包</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">类声明</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">静态变量</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BA%8F%E5%88%97%E5%8F%B7"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">序列号</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%BB%98%E8%AE%A4%E5%88%9D%E5%A7%8B%E5%AE%B9%E9%87%8F"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">默认初始容量</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9C%80%E5%A4%A7%E5%AE%B9%E9%87%8F"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">最大容量</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%BB%98%E8%AE%A4%E8%A3%85%E8%BD%BD%E5%9B%A0%E5%AD%90"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">默认装载因子</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A0%91%E5%8C%96%E9%98%88%E5%80%BC"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">树化阈值</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%9D%9E%E6%A0%91%E5%8C%96%E9%98%88%E5%80%BC"><span class="toc-nav-number">4.6.</span> <span class="toc-nav-text">非树化阈值</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9C%80%E5%B0%8F%E6%A0%91%E5%8C%96%E5%AE%B9%E9%87%8F"><span class="toc-nav-number">4.7.</span> <span class="toc-nav-text">最小树化容量</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">静态内部类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%94%AE%E5%80%BC%E5%AF%B9%E7%BB%93%E7%82%B9"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">键值对结点</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">红黑树</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text">迭代器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%93%88%E5%B8%8C%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-nav-number">5.3.1.</span> <span class="toc-nav-text">哈希迭代器</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%94%AE%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-nav-number">5.4.</span> <span class="toc-nav-text">键迭代器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%80%BC%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-nav-number">5.4.1.</span> <span class="toc-nav-text">值迭代器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%94%AE%E5%80%BC%E5%AF%B9%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-nav-number">5.4.2.</span> <span class="toc-nav-text">键值对迭代器</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%86%E5%89%B2%E5%99%A8"><span class="toc-nav-number">5.5.</span> <span class="toc-nav-text">分割器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E5%88%86%E5%89%B2%E5%99%A8"><span class="toc-nav-number">5.5.1.</span> <span class="toc-nav-text">哈希表分割器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%94%AE%E5%80%BC%E5%AF%B9%E5%88%86%E5%89%B2%E5%99%A8"><span class="toc-nav-number">5.5.2.</span> <span class="toc-nav-text">键值对分割器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%94%AE%E5%88%86%E5%89%B2%E5%99%A8"><span class="toc-nav-number">5.5.3.</span> <span class="toc-nav-text">键分割器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%80%BC%E5%88%86%E5%89%B2%E5%99%A8"><span class="toc-nav-number">5.5.4.</span> <span class="toc-nav-text">值分割器</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">静态方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%AE%A1%E7%AE%97%E5%93%88%E5%B8%8C%E5%80%BC"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">计算哈希值</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%98%AF%E5%90%A6%E5%8F%AF%E6%AF%94%E8%BE%83"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text">是否可比较</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%AF%E6%AF%94%E8%BE%83%E6%97%B6%E6%AF%94%E8%BE%83"><span class="toc-nav-number">6.3.</span> <span class="toc-nav-text">可比较时比较</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%AE%A1%E7%AE%97%E5%AE%B9%E9%87%8F"><span class="toc-nav-number">6.4.</span> <span class="toc-nav-text">计算容量</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">成员变量</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BB%93%E7%82%B9%E6%95%B0%E7%BB%84"><span class="toc-nav-number">7.1.</span> <span class="toc-nav-text">结点数组</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BB%93%E7%82%B9%E9%9B%86%E5%90%88"><span class="toc-nav-number">7.2.</span> <span class="toc-nav-text">结点集合</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%94%AE%E5%80%BC%E5%AF%B9%E6%95%B0%E9%87%8F"><span class="toc-nav-number">7.3.</span> <span class="toc-nav-text">键值对数量</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BB%93%E6%9E%84%E4%BF%AE%E6%94%B9%E6%AC%A1%E6%95%B0"><span class="toc-nav-number">7.4.</span> <span class="toc-nav-text">结构修改次数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%B9%E9%87%8F%E9%98%88%E5%80%BC"><span class="toc-nav-number">7.5.</span> <span class="toc-nav-text">容量阈值</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A3%85%E8%BD%BD%E5%9B%A0%E5%AD%90"><span class="toc-nav-number">7.6.</span> <span class="toc-nav-text">装载因子</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">构造函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%97%A0%E5%8F%82%E6%9E%84%E9%80%A0"><span class="toc-nav-number">8.1.</span> <span class="toc-nav-text">无参构造</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8C%87%E5%AE%9A%E5%88%9D%E5%A7%8B%E5%AE%B9%E9%87%8F%E5%92%8C%E8%A3%85%E8%BD%BD%E5%9B%A0%E5%AD%90"><span class="toc-nav-number">8.2.</span> <span class="toc-nav-text">指定初始容量和装载因子</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8C%87%E5%AE%9A%E5%88%9D%E5%A7%8B%E5%AE%B9%E9%87%8F"><span class="toc-nav-number">8.3.</span> <span class="toc-nav-text">指定初始容量</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8C%87%E5%AE%9A%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="toc-nav-number">8.4.</span> <span class="toc-nav-text">指定数据源</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">实例方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%89%B9%E9%87%8F%E5%8A%A0%E5%85%A5%E9%94%AE%E5%80%BC%E5%AF%B91"><span class="toc-nav-number">9.1.</span> <span class="toc-nav-text">批量加入键值对1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%94%E5%9B%9E%E9%94%AE%E5%80%BC%E5%AF%B9%E6%95%B0%E9%87%8F"><span class="toc-nav-number">9.2.</span> <span class="toc-nav-text">返回键值对数量</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%A4%E6%96%AD%E7%A9%BA"><span class="toc-nav-number">9.3.</span> <span class="toc-nav-text">判断空</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%8E%B7%E5%8F%96%E5%80%BC"><span class="toc-nav-number">9.4.</span> <span class="toc-nav-text">获取值</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%8E%B7%E5%8F%96%E7%BB%93%E7%82%B9"><span class="toc-nav-number">9.5.</span> <span class="toc-nav-text">获取结点</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AD%98%E5%9C%A8%E9%94%AE"><span class="toc-nav-number">9.6.</span> <span class="toc-nav-text">存在键</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8A%A0%E5%85%A5%E9%94%AE%E5%80%BC%E5%AF%B9"><span class="toc-nav-number">9.7.</span> <span class="toc-nav-text">加入键值对</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8A%A0%E5%85%A5%E5%80%BC"><span class="toc-nav-number">9.8.</span> <span class="toc-nav-text">加入值</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%89%A9%E5%AE%B9"><span class="toc-nav-number">9.9.</span> <span class="toc-nav-text">扩容</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A1%B6%E7%9A%84%E6%A0%91%E5%8C%96"><span class="toc-nav-number">9.10.</span> <span class="toc-nav-text">桶的树化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%89%B9%E9%87%8F%E5%8A%A0%E5%85%A5%E9%94%AE%E5%80%BC%E5%AF%B92"><span class="toc-nav-number">9.11.</span> <span class="toc-nav-text">批量加入键值对2</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A7%BB%E9%99%A4%E9%94%AE"><span class="toc-nav-number">9.12.</span> <span class="toc-nav-text">移除键</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A7%BB%E9%99%A4%E7%BB%93%E7%82%B9"><span class="toc-nav-number">9.13.</span> <span class="toc-nav-text">移除结点</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B8%85%E9%99%A4%E6%89%80%E6%9C%89"><span class="toc-nav-number">9.14.</span> <span class="toc-nav-text">清除所有</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%A4%E6%96%AD%E5%AD%98%E5%9C%A8%E5%80%BC%E5%90%A6"><span class="toc-nav-number">9.15.</span> <span class="toc-nav-text">判断存在值否</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%8E%B7%E5%8F%96%E9%94%AE%E9%9B%86%E5%90%88"><span class="toc-nav-number">9.16.</span> <span class="toc-nav-text">获取键集合</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%8E%B7%E5%8F%96%E5%80%BC%E9%9B%86%E5%90%88"><span class="toc-nav-number">9.17.</span> <span class="toc-nav-text">获取值集合</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%8E%B7%E5%8F%96%E9%94%AE%E5%80%BC%E5%AF%B9%E9%9B%86%E5%90%88"><span class="toc-nav-number">9.18.</span> <span class="toc-nav-text">获取键值对集合</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%8B%E9%9A%86%E5%92%8C%E5%BA%8F%E5%88%97%E5%8C%96%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95"><span class="toc-nav-number">9.19.</span> <span class="toc-nav-text">克隆和序列化相关方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9B%BE%E6%8E%A5%E5%8F%A3%E7%9B%B8%E5%85%B3%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95"><span class="toc-nav-number">9.20.</span> <span class="toc-nav-text">图接口相关拓展方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#LinkedHashMap%E6%94%AF%E6%8C%81%E6%96%B9%E6%B3%95"><span class="toc-nav-number">9.21.</span> <span class="toc-nav-text">LinkedHashMap支持方法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">普通内部类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%94%AE%E9%9B%86%E5%90%88"><span class="toc-nav-number">10.1.</span> <span class="toc-nav-text">键集合</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%80%BC%E9%9B%86%E5%90%88"><span class="toc-nav-number">10.2.</span> <span class="toc-nav-text">值集合</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%94%AE%E5%80%BC%E5%AF%B9%E9%9B%86%E5%90%88"><span class="toc-nav-number">10.3.</span> <span class="toc-nav-text">键值对集合</span></a></li></ol></li></ol>
-        
-        </div>
-      </aside>
-    
-
-
-
-      <!-- Sidebar Container -->
-      <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-        <!-- Featured Tags -->
-        
-        <section>
-          <!-- no hr -->
-          <h5>
-            <a href="/tags/">特色标签</a>
-          </h5>
-          <div class="tags">
-            
-            <a class="tag" href="/tags/#Java" title="Java">Java</a>
-            
-            <a class="tag" href="/tags/#jdk" title="jdk">jdk</a>
-            
-            <a class="tag" href="/tags/#source code" title="source code">source code</a>
-            
-          </div>
-        </section>
-        
-
-        <!-- Friends Blog -->
-        
-        <hr>
-        <h5>链友</h5>
-        <ul class="list-inline">
-
-          
-        </ul>
-        
-      </div>
-    </div>
   </div>
-</article>
-
-
-
-<!-- anchorjs start -->
-<!-- async load function -->
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script type="text/javascript">
-  // async load function
-  function async (u, c) {
-    var d = document,
-      t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) {
-      o.addEventListener('load', function(e) {
-        c(null, e);
-      }, false);
-    }
-    s.parentNode.insertBefore(o, s);
-  };
-</script>
-<script type="text/javascript">
-  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
-  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
-    anchors.options = {
-      visible: 'hover',
-      placement: 'left',
-      // icon: 'ℬ'
-      icon: '❡'
-    };
-    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-  });
-</script>
-<style>
-  /* place left on bigger screen */
-  @media all and (min-width: 800px) {
-    .anchorjs-link {
-      position: absolute;
-      left: -0.75em;
-      font-size: 1.1em;
-      margin-top: -0.1em;
-    }
-  }
-</style>
-
-<!-- anchorjs end -->
-
+</div>
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->

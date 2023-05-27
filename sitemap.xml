@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://blog.chugyoyo.com/cn/1630303287/</loc>
+    <loc>https://blog.chugyoyo.com/page_back/Java8%E6%BA%90%E7%A0%81%E4%B9%8B%E2%80%94%E2%80%94HashMap.html</loc>
     
     <lastmod>2021-08-30</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://blog.chugyoyo.com/cn/1630301212/</loc>
+    <loc>https://blog.chugyoyo.com/page_back/Java8%E6%BA%90%E7%A0%81%E4%B9%8B%E2%80%94%E2%80%94Queue.html</loc>
     
     <lastmod>2021-08-30</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://blog.chugyoyo.com/cn/1629296718/</loc>
+    <loc>https://blog.chugyoyo.com/page_back/%E7%AE%80%E5%8D%95%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95.html</loc>
     
     <lastmod>2021-08-18</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://blog.chugyoyo.com/cn/1629219469/</loc>
+    <loc>https://blog.chugyoyo.com/page_back/%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98.html</loc>
     
     <lastmod>2021-08-17</lastmod>
     
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://blog.chugyoyo.com/cn/1629034938/</loc>
+    <loc>https://blog.chugyoyo.com/page_back/%E5%A4%9A%E6%AD%A5%E9%97%AE%E9%A2%98%E2%80%94%E2%80%94%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E4%B8%89%E6%AD%A5%E9%97%AE%E9%A2%98%E7%9A%84%E5%BC%95%E7%94%B3.html</loc>
     
     <lastmod>2021-08-15</lastmod>
     
@@ -83,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://blog.chugyoyo.com/cn/1629032754/</loc>
+    <loc>https://blog.chugyoyo.com/page_back/%E5%85%A5%E9%97%A8TCP%E7%9A%84%E6%9C%BA%E5%88%B6%E5%8F%8A%E6%8F%A1%E6%89%8B%E6%8C%A5%E6%89%8B.html</loc>
     
     <lastmod>2021-08-15</lastmod>
     
@@ -101,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://blog.chugyoyo.com/cn/1628609252/</loc>
+    <loc>https://blog.chugyoyo.com/page_back/%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98SSD%20m2%E6%8E%A5%E5%8F%A3%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%85%B3%E7%B3%BB.html</loc>
     
     <lastmod>2021-08-10</lastmod>
     
@@ -121,7 +121,7 @@
 
   <url>
     <loc>https://blog.chugyoyo.com/</loc>
-    <lastmod>2023-05-26</lastmod>
+    <lastmod>2023-05-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -129,102 +129,25 @@
   
   <url>
     <loc>https://blog.chugyoyo.com/tags/git/</loc>
-    <lastmod>2023-05-26</lastmod>
+    <lastmod>2023-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.chugyoyo.com/tags/github/</loc>
-    <lastmod>2023-05-26</lastmod>
+    <lastmod>2023-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.chugyoyo.com/tags/emoji/</loc>
-    <lastmod>2023-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chugyoyo.com/tags/Java/</loc>
-    <lastmod>2023-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chugyoyo.com/tags/jdk/</loc>
-    <lastmod>2023-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chugyoyo.com/tags/source-code/</loc>
-    <lastmod>2023-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chugyoyo.com/tags/SSD/</loc>
-    <lastmod>2023-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chugyoyo.com/tags/algorithm/</loc>
-    <lastmod>2023-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chugyoyo.com/tags/regex/</loc>
-    <lastmod>2023-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chugyoyo.com/tags/TCP/</loc>
-    <lastmod>2023-05-26</lastmod>
+    <lastmod>2023-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
 
-  
-  <url>
-    <loc>https://blog.chugyoyo.com/categories/software/</loc>
-    <lastmod>2023-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chugyoyo.com/categories/hardware/</loc>
-    <lastmod>2023-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chugyoyo.com/categories/algorithm/</loc>
-    <lastmod>2023-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.chugyoyo.com/categories/network/</loc>
-    <lastmod>2023-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
   
 </urlset>
