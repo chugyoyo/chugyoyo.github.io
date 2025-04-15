@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.chugyoyo.com/en/cli5hz2bx0003b0td5uhv85ak/</loc>
+    <loc>https://chugyoyo.com/en/cli5hz2bx0003b0td5uhv85ak/</loc>
     
     <lastmod>2023-05-26</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://blog.chugyoyo.com/tags/index.html</loc>
+    <loc>https://chugyoyo.com/tags/index.html</loc>
     
     <lastmod>2023-05-26</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://blog.chugyoyo.com/categories/index.html</loc>
+    <loc>https://chugyoyo.com/categories/index.html</loc>
     
     <lastmod>2023-05-26</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://blog.chugyoyo.com/404.html</loc>
+    <loc>https://chugyoyo.com/404.html</loc>
     
     <lastmod>2023-05-26</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://blog.chugyoyo.com/about/index.html</loc>
+    <loc>https://chugyoyo.com/about/index.html</loc>
     
     <lastmod>2021-08-11</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://blog.chugyoyo.com/archive/index.html</loc>
+    <loc>https://chugyoyo.com/archive/index.html</loc>
     
     <lastmod>2017-03-20</lastmod>
     
@@ -57,7 +57,7 @@
   
 
   <url>
-    <loc>https://blog.chugyoyo.com/</loc>
+    <loc>https://chugyoyo.com/</loc>
     <lastmod>2023-05-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -65,21 +65,21 @@
 
   
   <url>
-    <loc>https://blog.chugyoyo.com/tags/git/</loc>
+    <loc>https://chugyoyo.com/tags/git/</loc>
     <lastmod>2023-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.chugyoyo.com/tags/github/</loc>
+    <loc>https://chugyoyo.com/tags/github/</loc>
     <lastmod>2023-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.chugyoyo.com/tags/emoji/</loc>
+    <loc>https://chugyoyo.com/tags/emoji/</loc>
     <lastmod>2023-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
